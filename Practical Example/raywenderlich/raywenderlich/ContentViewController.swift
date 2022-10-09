@@ -10,8 +10,21 @@ import UIKit
 class ContentViewController: UITableViewController {
     private let contentManager = ContentManager()
     
+    private var segmentControl: UISegmentedControl!
+    
+    @objc func segmentChanged(){
+        DispatchQueue.main.async { [weak self] in
+            self?.tableView.reloadData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.createSegmentControl()
+        self.loadContent()
+    }
+    
+    private func loadContent(){
         Task{
             do{
                 try await contentManager.getContent()
@@ -24,15 +37,24 @@ class ContentViewController: UITableViewController {
         }
     }
     
+    private func createSegmentControl(){
+        self.segmentControl = UISegmentedControl(items:["Videos", "Articles", "All"])
+        self.segmentControl.frame = CGRect(x: 0, y: 0, width: self.tableView.frame.width, height: 40)
+        self.segmentControl.selectedSegmentIndex = 0
+        self.segmentControl.addTarget(self, action: #selector(segmentChanged), for: .valueChanged)
+        self.tableView.tableHeaderView = self.segmentControl
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return contentManager.content.count
+        return contentManager.getContent(with: segmentControl.selectedSegmentIndex).count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
         var config = cell.defaultContentConfiguration()
-        config.text = contentManager.content[indexPath.row].attributes.name
-        config.secondaryText = contentManager.content[indexPath.row].attributes.content_type.rawValue
+        let content = contentManager.getContent(with: segmentControl.selectedSegmentIndex)[indexPath.row]
+        config.text = content.attributes.name
+        config.secondaryText = content.attributes.content_type.rawValue
         cell.contentConfiguration = config
         return cell
     }

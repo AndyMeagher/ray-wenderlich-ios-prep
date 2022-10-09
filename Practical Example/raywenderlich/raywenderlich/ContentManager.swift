@@ -9,12 +9,21 @@ import Foundation
 
 class ContentManager{
     let networkingDelegate : NetworkingDelegate
-    var content = [Content]()
+    private var allContent = [Content]()
     
     init(networkingDelegate: NetworkingDelegate = RayWenderlichAPI(),
          content: [Content] = [Content]()) {
         self.networkingDelegate = networkingDelegate
-        self.content = content
+        self.allContent = content
+    }
+    
+    func getContent(with index: Int) -> [Content]{
+        if index == 0{
+            return allContent.filter{ $0.attributes.content_type == .collection }
+        }else if index == 1{
+            return allContent.filter{ $0.attributes.content_type == .article }
+        }
+        return allContent
     }
     
     func getContent() async throws{
@@ -24,8 +33,8 @@ class ContentManager{
             throw NetworkError.requestError(message: "An Error Occurred")
         }
                 
-        self.content.append(contentsOf: videos)
-        self.content.append(contentsOf: articles)
+        self.allContent.append(contentsOf: videos)
+        self.allContent.append(contentsOf: articles)
         
     }
 
