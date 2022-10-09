@@ -8,7 +8,7 @@
 import Foundation
 
 protocol NetworkingDelegate{
-    func getContent(completion: @escaping (Result<[Content], NetworkError>)->Void)
+    func getContent(from resource: Resource) async throws -> [Content]
 }
 
 enum HTTPMethod : String{
@@ -18,15 +18,12 @@ enum HTTPMethod : String{
 }
 
 enum NetworkError : Error{
-    case unknown
-    case requestError(error: Error)
+    case requestError(message: String)
     
     var message: String{
         switch self{
-        case .requestError(let error):
-            return error.localizedDescription
-        default:
-            return "An Error Occurred. Please Try Again."
+        case .requestError(let message):
+            return message
         }
     }
 }
