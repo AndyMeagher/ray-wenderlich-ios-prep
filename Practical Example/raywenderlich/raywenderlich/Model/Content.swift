@@ -23,5 +23,6 @@ struct Content : Decodable{
 struct Attributes : Decodable{
     let content_type: ContentType
     let name: String
+    let released_at: Date
     let description: String
 }
