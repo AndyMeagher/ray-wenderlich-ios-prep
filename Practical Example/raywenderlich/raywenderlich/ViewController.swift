@@ -8,10 +8,20 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    let networkingDelegate : NetworkingDelegate = RayWenderlichAPI()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        networkingDelegate.getContent { result in
+            switch result{
+            case .success(let content):
+                print(content)
+                break
+            case .failure(let error):
+                break
+            }
+        }
     }
 
 
