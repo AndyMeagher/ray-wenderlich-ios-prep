@@ -19,6 +19,7 @@ class ViewController: UIViewController {
                 print(content)
                 break
             case .failure(let error):
+                self.print(error.message)
                 break
             }
         }
