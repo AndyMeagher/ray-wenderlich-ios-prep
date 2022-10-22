@@ -24,5 +24,6 @@ struct Attributes : Decodable{
     let content_type: ContentType
     let name: String
     let released_at: Date
-    let description: String
+    let description_plain_text: String
+    let card_artwork_url: String
 }

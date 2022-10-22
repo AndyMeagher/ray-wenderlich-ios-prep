@@ -20,6 +20,7 @@ class ContentViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.separatorStyle = .none
         self.createSegmentControl()
         self.loadContent()
     }
@@ -50,12 +51,9 @@ class ContentViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
-        var config = cell.defaultContentConfiguration()
+        let cell = ContentTableViewCell(style: .default, reuseIdentifier: nil)
         let content = contentManager.getContent(with: segmentControl.selectedSegmentIndex)[indexPath.row]
-        config.text = content.attributes.name
-        config.secondaryText = content.attributes.content_type.rawValue
-        cell.contentConfiguration = config
+        cell.configureCell(with: content)
         return cell
     }
     

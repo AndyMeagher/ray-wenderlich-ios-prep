@@ -17,6 +17,9 @@
 		611BEE6C28F3173E00F4D77A /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611BEE6B28F3173E00F4D77A /* Content.swift */; };
 		611BEE6E28F318C400F4D77A /* NetworkingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611BEE6D28F318C400F4D77A /* NetworkingDelegate.swift */; };
 		611BEE7028F31C9E00F4D77A /* ContentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611BEE6F28F31C9E00F4D77A /* ContentManager.swift */; };
+		611BEE7228F381A600F4D77A /* ContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611BEE7128F381A600F4D77A /* ContentTableViewCell.swift */; };
+		61B6F29429042AB9008BD932 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B6F29329042AB9008BD932 /* Styles.swift */; };
+		61B6F29629044E1E008BD932 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B6F29529044E1E008BD932 /* ImageLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +35,9 @@
 		611BEE6B28F3173E00F4D77A /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 		611BEE6D28F318C400F4D77A /* NetworkingDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingDelegate.swift; sourceTree = "<group>"; };
 		611BEE6F28F31C9E00F4D77A /* ContentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentManager.swift; sourceTree = "<group>"; };
+		611BEE7128F381A600F4D77A /* ContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTableViewCell.swift; sourceTree = "<group>"; };
+		61B6F29329042AB9008BD932 /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
+		61B6F29529044E1E008BD932 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,11 +70,12 @@
 		611BEE5228F26D3200F4D77A /* raywenderlich */ = {
 			isa = PBXGroup;
 			children = (
+				611BEE7428F381C900F4D77A /* Views */,
+				611BEE7328F381B400F4D77A /* DataManager */,
 				611BEE6A28F3172B00F4D77A /* Networking */,
 				611BEE6928F3171C00F4D77A /* Model */,
 				611BEE5328F26D3200F4D77A /* AppDelegate.swift */,
 				611BEE5528F26D3200F4D77A /* SceneDelegate.swift */,
-				611BEE6F28F31C9E00F4D77A /* ContentManager.swift */,
 				611BEE5728F26D3200F4D77A /* ContentViewController.swift */,
 				611BEE5928F26D3200F4D77A /* Main.storyboard */,
 				611BEE5C28F26D3300F4D77A /* Assets.xcassets */,
@@ -91,8 +98,26 @@
 			children = (
 				611BEE6728F26D9200F4D77A /* RayWenderlichAPI.swift */,
 				611BEE6D28F318C400F4D77A /* NetworkingDelegate.swift */,
+				61B6F29529044E1E008BD932 /* ImageLoader.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		611BEE7328F381B400F4D77A /* DataManager */ = {
+			isa = PBXGroup;
+			children = (
+				611BEE6F28F31C9E00F4D77A /* ContentManager.swift */,
+			);
+			path = DataManager;
+			sourceTree = "<group>";
+		};
+		611BEE7428F381C900F4D77A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				61B6F29329042AB9008BD932 /* Styles.swift */,
+				611BEE7128F381A600F4D77A /* ContentTableViewCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,9 +191,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61B6F29429042AB9008BD932 /* Styles.swift in Sources */,
 				611BEE6E28F318C400F4D77A /* NetworkingDelegate.swift in Sources */,
+				61B6F29629044E1E008BD932 /* ImageLoader.swift in Sources */,
 				611BEE5828F26D3200F4D77A /* ContentViewController.swift in Sources */,
 				611BEE5428F26D3200F4D77A /* AppDelegate.swift in Sources */,
+				611BEE7228F381A600F4D77A /* ContentTableViewCell.swift in Sources */,
 				611BEE5628F26D3200F4D77A /* SceneDelegate.swift in Sources */,
 				611BEE6C28F3173E00F4D77A /* Content.swift in Sources */,
 				611BEE6828F26D9200F4D77A /* RayWenderlichAPI.swift in Sources */,
